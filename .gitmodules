@@ -1,6 +1,6 @@
 [submodule "Amenoma"]
 	path = Amenoma
-	url = git@github.com:zyr17/Amenoma.git
+	url = https://github.com/zyr17/Amenoma.git
 [submodule "cocogoat"]
 	path = cocogoat
-	url = git@github.com:zyr17/cocogoat.git
+	url = https://github.com/zyr17/cocogoat.git
