@@ -1,6 +1,6 @@
 # 天目流椰羊AmenomaCocogoat
 
-一个缝合怪，拼接了[天目Amenoma](https://github.com/daydreaming666/Amenoma)和[椰羊cocogoat](https://github.com/YuehaiTeam/cocogoat)，用于对原神圣遗物识别、过滤和自动加锁解锁。
+一个缝合怪，拼接了[天目Amenoma](https://github.com/daydreaming666/Amenoma)和[椰羊cocogoat](https://github.com/YuehaiTeam/cocogoat)，用于对原神圣遗物识别、过滤和部分加锁解锁。
 
 ---
 
@@ -64,4 +64,3 @@ Amenoma和Cocogoat完全独立，均基于原版配置二次开发。二次开�
 - 由于需要识别圣遗物后才能决定是否加锁解锁，魔改版Amenoma相比原版扫描速度降为约二分之一
 - 目前不会保存过滤配置，每次启动需要手动重新输入
 - 未支持中文以外的语言
-- 最后一页时圣遗物锁可能识别出错，待修复，可以对最后一页重新扫描一遍
