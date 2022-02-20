@@ -1,6 +1,6 @@
 # 天目流椰羊AmenomaCocogoat
 
-一个缝合怪，拼接了[天目Amenoma](https://github.com/daydreaming666/Amenoma)和[椰羊cocogoat](https://github.com/YuehaiTeam/cocogoat)，用于对原神圣遗物识别、过滤和部分加锁解锁。
+一个缝合怪，拼接了[天目Amenoma](https://github.com/daydreaming666/Amenoma)和[椰羊cocogoat](https://github.com/YuehaiTeam/cocogoat-client)，用于对原神圣遗物识别、过滤和部分加锁解锁。
 
 ---
 
