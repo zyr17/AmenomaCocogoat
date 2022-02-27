@@ -89,6 +89,7 @@ jobs:
       - name: Build native modules
         run: |
           cd cocogoat
+          pwd | % {npm config set node_gyp "$_\node_modules\node-gyp\bin\node-gyp.js"}
           npm rebuild --force
       - name: Build
         run: |
