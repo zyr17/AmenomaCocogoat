@@ -6,6 +6,19 @@
 
 Amenoma相关代码基于GPLv3开源，cocogoat和该整合工具相关代码基于MIT开源。作者不会对使用该工具产生的任何后果负责。
 
+## 暂停维护通知
+
+该项目已暂停维护，v0.3.3基于原神2.5版本的功能仍可使用，将来游戏新增圣遗物后新圣遗物将无法识别/识别错误。
+
+在v0.3.4版本中cocogoat加入了过滤规则导入导出和批量执行过滤规则的功能，由于打算暂停维护暂未很好测试，不排除还有BUG。
+
+由于目前已经有了更好用的圣遗物相关工具，作者已经把过滤规则面板移植到
+[tseflcz/artifact-master](https://github.com/tseflcz/artifacts-master)中，
+同时换用[yas](https://github.com/wormtql/yas)和[yas-lock](https://github.com/ideless/yas-lock)作为扫描和加锁工具。
+上述工具具有更小的体积、更快的速度，实在是太香了，故暂停维护该仓库。
+
+“由于这个工具太方便了，作者已经跑去用这个工具了，本仓库暂停更新”
+
 ## 功能
 
 - 基于Amenoma的圣遗物自动识别
@@ -56,6 +69,27 @@ Amenoma相关代码基于GPLv3开源，cocogoat和该整合工具相关代码基
 不想包含的副词条和上述类似，不同在于：最多包含条数，圣遗物副词条最多只能包含多少条不想包含的副词条。添加不包含副词条，添加新的一条不想包含的副词条。
 
 点击确定应用过滤，界面将只展示过滤出的圣遗物，同时过滤按钮变为取消过滤，点击后重新展示所有圣遗物。
+
+## 批量过滤
+
+支持规则的导入导出，以及可以使用多个规则依次执行，从而只需要存好批量规则避免了每次都要重设规则的烦恼。
+
+首先使用过滤规则编写规则，并导出规则，规则会以JSON格式存储于剪贴板。
+然后在顶部有批量过滤按钮，批量过滤面板中新增一条规则并将导出的规则贴于下方文本框。
+同时在规则左侧有选择该规则过滤出圣遗物是全部加锁还是全部解锁按钮。
+批量规则也支持数据的导入导出。这里给出一些我自用的批量规则数据。
+
+### 普通的批量垃圾
+
+```JSON
+[{"comment":"全部先加锁","filterjson":"{\"main\":[],\"stars\":[],\"level\":[],\"name\":[],\"set\":[],\"position\":[],\"subCount\":[],\"includeSub\":[],\"includeSubCount\":0,\"excludeSub\":[],\"excludeSubCount\":0}","lock":true},{"comment":"非羽毛主攻击无爆","filterjson":"{\"main\":[\"攻击力\"],\"stars\":[],\"level\":[],\"name\":[],\"set\":[],\"position\":[\"时之沙\",\"空之杯\",\"理之冠\"],\"subCount\":[4],\"includeSub\":[],\"includeSubCount\":0,\"excludeSub\":[{\"name\":\"暴击率\",\"value\":\"0%\",\"equation\":2},{\"name\":\"暴击伤害\",\"value\":\"0%\",\"equation\":2}],\"excludeSubCount\":0}","lock":false},{"comment":"花羽，小字大三围共四条（大三围冲突，剩下小字，基本只有一条有效）","filterjson":"{\"main\":[],\"stars\":[],\"level\":[],\"name\":[],\"set\":[],\"position\":[\"生之花\",\"死之羽\"],\"subCount\":[],\"includeSub\":[{\"name\":\"攻击力\",\"value\":\"0\",\"equation\":2},{\"name\":\"防御力\",\"value\":\"0\",\"equation\":2},{\"name\":\"生命值\",\"value\":\"0\",\"equation\":2},{\"name\":\"攻击力\",\"value\":\"0%\",\"equation\":2},{\"name\":\"防御力\",\"value\":\"0%\",\"equation\":2},{\"name\":\"生命值\",\"value\":\"0%\",\"equation\":2}],\"includeSubCount\":4,\"excludeSub\":[],\"excludeSubCount\":0}","lock":false},{"comment":"三条三维小字","filterjson":"{\"main\":[],\"stars\":[],\"level\":[],\"name\":[],\"set\":[],\"position\":[],\"subCount\":[],\"includeSub\":[{\"name\":\"攻击力\",\"value\":\"0\",\"equation\":2},{\"name\":\"防御力\",\"value\":\"0\",\"equation\":2},{\"name\":\"生命值\",\"value\":\"0\",\"equation\":2}],\"includeSubCount\":3,\"excludeSub\":[],\"excludeSubCount\":0}","lock":false},{"comment":"主词条是三维，副词条有三条以上的三维小字或三维百分比","filterjson":"{\"main\":[\"攻击力\"],\"stars\":[],\"level\":[0],\"name\":[],\"set\":[],\"position\":[\"时之沙\",\"空之杯\",\"理之冠\"],\"subCount\":[],\"includeSub\":[{\"name\":\"攻击力\",\"value\":\"0\",\"equation\":2},{\"name\":\"防御力\",\"value\":\"0\",\"equation\":2},{\"name\":\"生命值\",\"value\":\"0\",\"equation\":2},{\"name\":\"生命值\",\"value\":\"0%\",\"equation\":2},{\"name\":\"防御力\",\"value\":\"0%\",\"equation\":2}],\"includeSubCount\":3,\"excludeSub\":[],\"excludeSubCount\":0}","lock":false},{"comment":"主词条是三维，副词条有三条以上的三维小字或三维百分比","filterjson":"{\"main\":[\"防御力\"],\"stars\":[],\"level\":[0],\"name\":[],\"set\":[],\"position\":[\"时之沙\",\"空之杯\",\"理之冠\"],\"subCount\":[],\"includeSub\":[{\"name\":\"攻击力\",\"value\":\"0\",\"equation\":2},{\"name\":\"防御力\",\"value\":\"0\",\"equation\":2},{\"name\":\"生命值\",\"value\":\"0\",\"equation\":2},{\"name\":\"生命值\",\"value\":\"0%\",\"equation\":2},{\"name\":\"攻击力\",\"value\":\"0%\",\"equation\":2}],\"includeSubCount\":3,\"excludeSub\":[],\"excludeSubCount\":0}","lock":false},{"comment":"主词条是三维，副词条有三条以上的三维小字或三维百分比","filterjson":"{\"main\":[\"生命值\"],\"stars\":[],\"level\":[0],\"name\":[],\"set\":[],\"position\":[\"时之沙\",\"空之杯\",\"理之冠\"],\"subCount\":[],\"includeSub\":[{\"name\":\"攻击力\",\"value\":\"0\",\"equation\":2},{\"name\":\"防御力\",\"value\":\"0\",\"equation\":2},{\"name\":\"生命值\",\"value\":\"0\",\"equation\":2},{\"name\":\"防御力\",\"value\":\"0%\",\"equation\":2},{\"name\":\"攻击力\",\"value\":\"0%\",\"equation\":2}],\"includeSubCount\":3,\"excludeSub\":[],\"excludeSubCount\":0}","lock":false},{"comment":"对于花羽，4条，没有双爆且两条小字","filterjson":"{\"main\":[],\"stars\":[],\"level\":[],\"name\":[],\"set\":[],\"position\":[\"生之花\",\"死之羽\"],\"subCount\":[4],\"includeSub\":[{\"name\":\"攻击力\",\"value\":\"0\",\"equation\":2},{\"name\":\"防御力\",\"value\":\"0\",\"equation\":2},{\"name\":\"生命值\",\"value\":\"0\",\"equation\":2}],\"includeSubCount\":2,\"excludeSub\":[{\"name\":\"暴击率\",\"value\":\"0%\",\"equation\":2},{\"name\":\"暴击伤害\",\"value\":\"0%\",\"equation\":2}],\"excludeSubCount\":0}","lock":false},{"comment":"所有元素杯，暴头，治疗头，充能沙，精通件","filterjson":"{\"main\":[\"暴击率\",\"暴击伤害\",\"元素精通\",\"元素充能效率\",\"物理伤害加成\",\"治疗加成\",\"岩元素伤害加成\",\"风元素伤害加成\",\"冰元素伤害加成\",\"水元素伤害加成\",\"雷元素伤害加成\",\"火元素伤害加成\"],\"stars\":[],\"level\":[],\"name\":[],\"set\":[],\"position\":[],\"subCount\":[],\"includeSub\":[],\"includeSubCount\":0,\"excludeSub\":[],\"excludeSubCount\":0}","lock":true},{"comment":"12级往上的","filterjson":"{\"main\":[],\"stars\":[],\"level\":[20,19,17,18,13,16,15,14,12],\"name\":[],\"set\":[],\"position\":[],\"subCount\":[],\"includeSub\":[],\"includeSubCount\":0,\"excludeSub\":[],\"excludeSubCount\":0}","lock":true}]
+```
+
+### 针对角斗乐团的花羽筛选
+
+```JSON
+[{"comment":"4条角斗花羽不到3条攻充爆爆","filterjson":"{\"main\":[],\"stars\":[],\"level\":[],\"name\":[],\"set\":[\"角斗士的终幕礼\"],\"position\":[\"生之花\",\"死之羽\"],\"subCount\":[4],\"includeSub\":[],\"includeSubCount\":0,\"excludeSub\":[{\"name\":\"暴击率\",\"value\":\"0%\",\"equation\":2},{\"name\":\"暴击伤害\",\"value\":\"0%\",\"equation\":2},{\"name\":\"元素充能效率\",\"value\":\"0%\",\"equation\":2},{\"name\":\"攻击力\",\"value\":\"0%\",\"equation\":2}],\"excludeSubCount\":2}","lock":false},{"comment":"3条角斗花羽不到2条攻充爆爆","filterjson":"{\"main\":[],\"stars\":[],\"level\":[],\"name\":[],\"set\":[\"角斗士的终幕礼\"],\"position\":[\"生之花\",\"死之羽\"],\"subCount\":[3],\"includeSub\":[],\"includeSubCount\":0,\"excludeSub\":[{\"name\":\"暴击率\",\"value\":\"0%\",\"equation\":2},{\"name\":\"暴击伤害\",\"value\":\"0%\",\"equation\":2},{\"name\":\"元素充能效率\",\"value\":\"0%\",\"equation\":2},{\"name\":\"攻击力\",\"value\":\"0%\",\"equation\":2}],\"excludeSubCount\":1}","lock":false},{"comment":"4条乐团花羽不到3条攻充爆爆精","filterjson":"{\"main\":[],\"stars\":[],\"level\":[],\"name\":[],\"set\":[\"流浪大地的乐团\"],\"position\":[\"生之花\",\"死之羽\"],\"subCount\":[4],\"includeSub\":[],\"includeSubCount\":0,\"excludeSub\":[{\"name\":\"暴击率\",\"value\":\"0%\",\"equation\":2},{\"name\":\"暴击伤害\",\"value\":\"0%\",\"equation\":2},{\"name\":\"元素充能效率\",\"value\":\"0%\",\"equation\":2},{\"name\":\"攻击力\",\"value\":\"0%\",\"equation\":2},{\"name\":\"元素精通\",\"value\":\"0\",\"equation\":2}],\"excludeSubCount\":2}","lock":false},{"comment":"3条乐团花羽不到2条攻充爆爆精","filterjson":"{\"main\":[],\"stars\":[],\"level\":[],\"name\":[],\"set\":[\"流浪大地的乐团\"],\"position\":[\"生之花\",\"死之羽\"],\"subCount\":[3],\"includeSub\":[],\"includeSubCount\":0,\"excludeSub\":[{\"name\":\"暴击率\",\"value\":\"0%\",\"equation\":2},{\"name\":\"暴击伤害\",\"value\":\"0%\",\"equation\":2},{\"name\":\"元素充能效率\",\"value\":\"0%\",\"equation\":2},{\"name\":\"攻击力\",\"value\":\"0%\",\"equation\":2},{\"name\":\"元素精通\",\"value\":\"0\",\"equation\":2}],\"excludeSubCount\":1}","lock":false},{"comment":"加锁红蓝花羽双爆的","filterjson":"{\"main\":[],\"stars\":[],\"level\":[],\"name\":[],\"set\":[\"角斗士的终幕礼\",\"流浪大地的乐团\"],\"position\":[\"生之花\",\"死之羽\"],\"subCount\":[],\"includeSub\":[{\"name\":\"暴击率\",\"value\":\"0%\",\"equation\":2},{\"name\":\"暴击伤害\",\"value\":\"0%\",\"equation\":2}],\"includeSubCount\":2,\"excludeSub\":[],\"excludeSubCount\":0}","lock":true}]
+```
 
 ## 开发
 
